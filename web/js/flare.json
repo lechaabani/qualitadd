@@ -1,0 +1,108 @@
+{
+    "name": "ACT_P_106",
+    "sub": "COUPON COURU",
+    "application": "SCD",
+    "responsable": "FF, DRG",
+    "control": "ACT_C01, ACT_C18",
+    "link": "http://localhost/qualitadd/web/index.php?r=donnee%2Fview&id=ACT_P_104",
+
+    "_children": [{
+        "name": "ACT_P_106",
+        "sub": "DATE ECHEANCE",
+        "application": "SCD",
+        "responsable": "FFI4",
+        "control": "ACT_C17",
+		"color": "red",
+        "link": "http://localhost/qualitadd/web/index.php?r=donnee%2Fview&id=ACT_P_106",
+        "_children": [{
+            "name": "ACT_P_230",
+            "sub": "DATE ECHEANCE",
+            "application": "BBG",
+            "responsable": "",
+            "control": "",
+            "link": "http://localhost/qualitadd/web/index.php?r=donnee%2Fview&id=ACT_P_230"
+        }]
+    }, {
+        "name": "ACT_P_117",
+        "sub": "VREMB_DPORT",
+        "application": "SCD",
+        "responsable": "",
+        "control": "ACT_C08",
+        "link": "http://localhost/qualitadd/web/index.php?r=donnee%2Fview&id=ACT_P_117"
+    }, {
+        "name": "ACT_P_109",
+        "sub": "MARGE FACIAL",
+        "application": "SCD",
+        "responsable": "FFI1, FFI2",
+        "control": "ACT_C18, ACT_C17",
+        "link": "http://localhost/qualitadd/web/index.php?r=donnee%2Fview&id=ACT_P_109",
+        "_children": [{
+            "name": "ACT_P_219",
+            "sub": "SPREAD RATE",
+            "application": "BBG",
+            "responsable": "",
+            "control": "",
+            "link": "http://localhost/qualitadd/web/index.php?r=donnee%2Fview&id=ACT_P_219"
+        }, {
+            "name": "ACT_P_218",
+            "sub": "COUPON RATE",
+            "application": "BBG",
+            "responsable": "",
+			"color": "red",
+            "control": "ACT_C17",
+            "link": "http://localhost/qualitadd/web/index.php?r=donnee%2Fview&id=ACT_P_218"
+        }]
+    }, {
+        "name": "ACT_P_220",
+        "sub": "DATE VALEUR",
+        "application": "BBG",
+        "responsable": "",
+        "control": "",
+        "link": "http://localhost/qualitadd/web/index.php?r=donnee%2Fview&id=ACT_P_220"
+    },{
+        "name": "ACT_P_221",
+        "sub": "PERIODICITE",
+        "application": "SCD",
+        "responsable": "FFI, FFP",
+        "control": "",
+        "link": "http://localhost/qualitadd/web/index.php?r=donnee%2Fview&id=ACT_P_221",
+        "_children": [{
+            "name": "ACT_P_114",
+            "sub": "TYPE_INSTRUMENT",
+            "application": "SCD",
+            "responsable": "FFI1",
+            "control": "ACT_C18, ACT_C13",
+			"color": "red",
+            "link": "http://localhost/qualitadd/web/index.php?r=donnee%2Fview&id=ACT_P_114",
+            "_children": [{
+                "name": "ACT_P_303",
+                "sub": "FAMILLE D'ACTIF",
+                "application": "SCD",
+                "responsable": "",
+                "control": "ACT_C06, ACT_C13",
+                "link": "http://localhost/qualitadd/web/index.php?r=donnee%2Fview&id=ACT_P_303"
+            }, {
+                "name": "ACT_P_312",
+                "sub": "SECTEUR RISQUE TIERS",
+                "application": "SCD",
+                "responsable": "",
+                "control": "",
+                "link": "http://localhost/qualitadd/web/index.php?r=donnee%2Fview&id=ACT_P_312"
+            }, {
+                "name": "ACT_P_302",
+                "sub": "CODE_ASSURANCE",
+                "application": "SCD",
+                "responsable": "FFI1",
+                "control": "ACT_C05",
+                "link": "http://localhost/qualitadd/web/index.php?r=donnee%2Fview&id=ACT_P_302"
+            }, {
+                "name": "ACT_P_210",
+                "sub": "SECURITY TYPE",
+                "application": "SCD",
+                "responsable": "",
+                "control": "ACT_C17",
+                "link": "http://localhost/qualitadd/web/index.php?r=donnee%2Fview&id=ACT_P_210"
+            }]
+        }]
+    }]
+}

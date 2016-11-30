@@ -1,0 +1,109 @@
+<?php
+
+namespace app\models;
+
+use Yii;
+
+/**
+ * This is the model class for table "donnee".
+ *
+ * @property string $Identifiant
+ * @property string $Libelle
+ * @property string $Description
+ * @property string $Code_systeme
+ * @property string $Typologie
+ * @property string $Format
+ * @property string $Granularite
+ * @property string $Application
+ * @property string $Table
+ * @property string $Etape
+ * @property string $Mode_de_production
+ * @property string $Origine
+ * @property string $Frequence_de_mise_a_jour
+ * @property string $Commentaires
+ * @property string $Statut
+ * @property string $Justification
+ * @property string $Priorite
+ * @property integer $Donnee_sensible
+ */
+class Donneesource extends \yii\db\ActiveRecord
+{
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return 'donnee';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['Identifiant', 'Libelle', 'Description', 'Code_systeme', 'Typologie', 'Format', 'Granularite', 'Application', 'Table', 'Etape', 'Mode_de_production', 'Origine', 'Frequence_de_mise_a_jour', 'Commentaires', 'Statut', 'Justification', 'Priorite', 'Donnee_sensible'], 'required'],
+            [['Donnee_sensible'], 'integer'],
+            [['Identifiant'], 'string', 'max' => 30],
+            [['Libelle', 'Typologie', 'Format', 'Granularite', 'Application', 'Table', 'Mode_de_production', 'Origine', 'Frequence_de_mise_a_jour', 'Statut', 'Priorite'], 'string', 'max' => 250],
+            [['Description', 'Etape'], 'string', 'max' => 200],
+            [['Code_systeme'], 'string', 'max' => 50],
+            [['Commentaires', 'Justification'], 'string', 'max' => 500],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'Identifiant' => 'Identifiant',
+            'Libelle' => 'Libelle',
+            'Description' => 'Description',
+            'Code_systeme' => 'Code Systeme',
+            'Typologie' => 'Typologie',
+            'Format' => 'Format',
+            'Granularite' => 'Granularite',
+            'Application' => 'Application',
+            'Table' => 'Table',
+            'Etape' => 'Etape',
+            'Mode_de_production' => 'Mode De Production',
+            'Origine' => 'Origine',
+            'Frequence_de_mise_a_jour' => 'Frequence De Mise A Jour',
+            'Commentaires' => 'Commentaires',
+            'Statut' => 'Statut',
+            'Justification' => 'Justification',
+            'Priorite' => 'Priorite',
+            'Donnee_sensible' => 'Donnee Sensible',
+        ];
+    }
+    
+
+    public function addSource($identifiant,$identifiant_pere)
+    {
+    	try {
+	    	$sql = "insert into donneesource (identifiant,identifiant_pere) values ('$identifiant','$identifiant_pere')"; 
+	    
+	    	$connection = Yii::$app->db;  
+	    	$query = $connection->createCommand($sql);
+	    	$query->execute();
+    	} catch (\Exception $exception) {
+    		echo "KO" ;
+    	}
+
+    }
+    
+    public function deleteSource($identifiant,$identifiant_pere)
+    {
+    	try {
+	    	$sql = "delete from donneesource where identifiant = '$identifiant' and identifiant_pere = '$identifiant_pere'";
+	    	 
+	    	$connection = Yii::$app->db;
+	    	$query = $connection->createCommand($sql);
+	    	$query->execute();
+    	} catch (\Exception $exception) {
+    		echo "KO" ;
+    	}
+    }
+}

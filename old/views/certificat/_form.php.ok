@@ -1,0 +1,76 @@
+<?php
+
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+
+/* @var $this yii\web\View */
+/* @var $model app\models\Certificat */
+/* @var $form yii\widgets\ActiveForm */
+?>
+
+
+<script>
+	function myFunction() {
+		alert("ok");
+		var x = document.getElementById("certificat-seuil_qualite_moyenne");
+		x.value = x.value.toUpperCase();
+	}
+</script>
+
+<div class="certificat-form">
+
+    <?php $form = ActiveForm::begin(); ?>
+	
+<div style="background:#f2f8f8;"><HR><b><font size="5" color="#033734"><?php echo '&nbsp; Caractéristiques'; ?></font></b><HR></div>
+
+    <?= $form->field($model, 'Identifiant')->textInput(['maxlength' => true,'style'=>'width:200px']) ?>
+
+    <?= $form->field($model, 'Libelle')->textInput(['maxlength' => true,'style'=>'width:400px']) ?>
+
+    <?= $form->field($model, 'Campagne')->textInput(['maxlength' => true,'style'=>'width:200px']) ?>
+
+    <?= $form->field($model, 'Donnee')->textInput(['maxlength' => true,'style'=>'width:200px']) ?>
+
+    <?= $form->field($model, 'Controle')->textInput(['maxlength' => true,'style'=>'width:200px']) ?>
+
+<div style="background:#f2f8f8;"><HR><b><font size="5" color="#033734"><?php echo '&nbsp; Seuils'; ?></font></b><HR></div>
+
+    <?= $form->field($model, 'Critere_de_seuil')->textInput(['maxlength' => true,'style'=>'width:200px']) ?>
+
+    <?php echo $form->field($model, 'Type_de_critere')->dropDownList(['Numérique' => 'Numérique', 'Pourcentage' => 'Pourcentage', 'Texte' => 'Texte'],['prompt'=>'Selectionner','style'=>'width:200px']); ?>
+
+    <?= $form->field($model, 'Seuil_Qualite_Moyenne')->textInput(['maxlength' => true,
+		'style'=>'width:200px',
+	    'onchange'=>'myFunction()']
+    ) ?>
+
+    <?= $form->field($model, 'Seuil_Qualite_Faible')->textInput(['maxlength' => true,'style'=>'width:200px']) ?>
+	
+<div style="background:#f2f8f8;"><HR><b><font size="5" color="#033734"><?php echo '&nbsp; Résultats'; ?></font></b><HR></div>
+
+    <?php echo $form->field($model, 'Resultat')->dropDownList(['OK' => 'OK', 'KO' => 'KO', 'NA' => 'NA'],['prompt'=>'Selectionner','style'=>'width:200px']); ?>
+
+    <?php echo $form->field($model, 'Evaluation')->dropDownList(['Qualité élevée' => 'Qualité élevée', 'Qualité moyenne' => 'Qualité moyenne', 'Qualité faible' => 'Qualité faible', 'NA' => 'NA'],['prompt'=>'Selectionner','style'=>'width:200px']); ?>
+   
+    <?php echo $form->field($model, 'Evaluation_forcee')->dropDownList(['Qualité élevée' => 'Qualité élevée', 'Qualité moyenne' => 'Qualité moyenne', 'Qualité faible' => 'Qualité faible', 'NA' => 'NA'],['prompt'=>'Selectionner','style'=>'width:200px']); ?>
+
+    <?= $form->field($model, 'Analyse')->textInput(['maxlength' => true,'style'=>'height:100px']) ?>
+
+    <?= $form->field($model, 'Remediation')->textInput(['maxlength' => true,'style'=>'height:100px']) ?>
+
+<div style="background:#f2f8f8;"><HR><b><font size="5" color="#033734"><?php echo '&nbsp; Justificats'; ?></font></b><HR></div>
+
+    <?= $form->field($model, 'Justificatifs')->textInput(['maxlength' => true,'height:100px'=>'width:200px']) ?>
+
+    <div class="form-group">
+        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Mettre à jour', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+    </div>
+
+    <?php ActiveForm::end(); ?>
+
+</div>
+
+
+
+
+

@@ -1,0 +1,89 @@
+<?php
+
+namespace app\models;
+
+use Yii;
+use yii\base\Model;
+use yii\data\ActiveDataProvider;
+use app\models\Donneesource;
+
+/**
+ * DonneesourceSearch represents the model behind the search form about `app\models\Donneesource`.
+ */
+class DonneesourceSearch extends Donneesource
+{
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['Identifiant', 'Libelle', 'Description', 'Code_systeme', 'Typologie', 'Format', 'Granularite', 'Application', 'Table', 'Etape', 'Mode_de_production', 'Origine', 'Frequence_de_mise_a_jour', 'Commentaires', 'Statut', 'Justification', 'Priorite'], 'safe'],
+            [['Donnee_sensible'], 'integer'],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function scenarios()
+    {
+        // bypass scenarios() implementation in the parent class
+        return Model::scenarios();
+    }
+
+    /**
+     * Creates data provider instance with search query applied
+     *
+     * @param array $params
+     *
+     * @return ActiveDataProvider
+     */
+    public function search($params)
+    {
+        $query = Donneesource::find();
+
+        // add conditions that should always apply here
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'Donnee_sensible' => $this->Donnee_sensible,
+        ]);
+
+        $query->andFilterWhere(['like', 'Identifiant', $this->Identifiant])
+            ->andFilterWhere(['like', 'Libelle', $this->Libelle])
+            ->andFilterWhere(['like', 'Description', $this->Description])
+            ->andFilterWhere(['like', 'Code_systeme', $this->Code_systeme])
+            ->andFilterWhere(['like', 'Typologie', $this->Typologie])
+            ->andFilterWhere(['like', 'Format', $this->Format])
+            ->andFilterWhere(['like', 'Granularite', $this->Granularite])
+            ->andFilterWhere(['like', 'Application', $this->Application])
+            ->andFilterWhere(['like', 'Table', $this->Table])
+            ->andFilterWhere(['like', 'Etape', $this->Etape])
+            ->andFilterWhere(['like', 'Mode_de_production', $this->Mode_de_production])
+            ->andFilterWhere(['like', 'Origine', $this->Origine])
+            ->andFilterWhere(['like', 'Frequence_de_mise_a_jour', $this->Frequence_de_mise_a_jour])
+            //->andFilterWhere(['like', 'Responsable', $this->Responsable])
+            ->andFilterWhere(['like', 'Commentaires', $this->Commentaires])
+            ->andFilterWhere(['like', 'Statut', $this->Statut])
+            ->andFilterWhere(['like', 'Justification', $this->Justification])
+            ->andFilterWhere(['like', 'Priorite', $this->Priorite]);
+            //->andFilterWhere(['like', 'Donnees_sources', $this->Donnees_sources])
+            //->andFilterWhere(['like', 'Controles_associes', $this->Controles_associes])
+           //->andFilterWhere(['like', 'Plans_actions_associes', $this->Plans_actions_associes]);
+
+        return $dataProvider;
+    }
+}
